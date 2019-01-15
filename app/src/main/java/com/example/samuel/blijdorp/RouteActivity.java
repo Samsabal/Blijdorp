@@ -33,6 +33,4 @@ public class RouteActivity extends AppCompatActivity {
 
         startActivity(intent);
     }
-
-
 }
