@@ -1,5 +1,9 @@
 package com.example.samuel.blijdorp;
 
+import android.Manifest;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 
@@ -38,9 +42,40 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
-        // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(-34, 151);
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+        int route = getIntent().getIntExtra("ROUTE", 0);
+
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED || ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            this.requestPermissions(new String[] {Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION}, 99);
+        }
+
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+            mMap.setMyLocationEnabled(true);
+        }
+
+        LatLng leeuwen = new LatLng(51.928423,4.450090);
+        LatLng olifant = new LatLng(51.928391, 4.451794);
+        LatLng tijger = new LatLng(51.927190, 4.451310);
+        LatLng gorilla = new LatLng(51.925592, 4.451792);
+
+
+        switch (route) {
+            case 0:
+                mMap.addMarker(new MarkerOptions().position(leeuwen).title("Aziatische leeuw").snippet("Voedertijd: 11:00"));
+                mMap.addMarker(new MarkerOptions().position(olifant).title("Aziatische Olifant").snippet("Voedertijd: 12:00"));
+                mMap.addMarker(new MarkerOptions().position(tijger).title("Sumatraanse tijger").snippet("Voedertijd: 13:00"));
+                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(leeuwen, 15f));
+                break;
+            case 1:
+                mMap.addMarker(new MarkerOptions().position(leeuwen).title("Aziatische leeuw").snippet("Voedertijd: 11:00"));
+                mMap.addMarker(new MarkerOptions().position(olifant).title("Aziatische Olifant").snippet("Voedertijd: 12:00"));
+
+                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(leeuwen, 15f));
+                break;
+            case 2:
+                mMap.addMarker(new MarkerOptions().position(olifant).title("Aziatische Olifant").snippet("Voedertijd: 12:00"));
+                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(olifant, 15f));
+                break;
+
+        }
     }
 }
