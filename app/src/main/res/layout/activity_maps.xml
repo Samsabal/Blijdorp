@@ -19,6 +19,17 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:onClick="startRouteActivity2"
-        android:text="Route" />
+        android:text="Routes" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/button"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="-24dp"
+        android:layout_marginTop="2dp"
+        android:text="TextView"
+        android:textSize="30sp" />
 
 </RelativeLayout>

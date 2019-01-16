@@ -18,6 +18,7 @@ public class RouteActivity extends AppCompatActivity {
         intent.putExtra("ROUTE", 0);
 
         startActivity(intent);
+        finish();
     }
     public void startMapsActivity1 (View view) {
         Intent intent = new Intent(this, MapsActivity.class);
@@ -25,6 +26,7 @@ public class RouteActivity extends AppCompatActivity {
         intent.putExtra("ROUTE", 1);
 
         startActivity(intent);
+        finish();
     }
     public void startMapsActivity2 (View view) {
         Intent intent = new Intent(this, MapsActivity.class);
@@ -32,5 +34,6 @@ public class RouteActivity extends AppCompatActivity {
         intent.putExtra("ROUTE", 2);
 
         startActivity(intent);
+//        finish();
     }
 }
