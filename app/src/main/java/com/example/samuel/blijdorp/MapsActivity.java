@@ -15,6 +15,8 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.maps.model.Polyline;
+import com.google.android.gms.maps.model.PolylineOptions;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
@@ -54,7 +56,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             mMap.setMyLocationEnabled(true);
         }
 
-        LatLng ingang = new LatLng(51.928213, 4.443798);
+        LatLng ingang = new LatLng(51.928121, 4.444192);
         LatLng zeeleeuw = new LatLng(51.928617, 4.444528);
         LatLng ijsbeer = new LatLng(51.927691, 4.445150);
         LatLng vlinders = new LatLng(51.928511, 4.447350);
@@ -63,34 +65,97 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         LatLng tijger = new LatLng(51.927190, 4.451310);
         LatLng gorilla = new LatLng(51.925592, 4.451792);
 
+        LatLng r1 = new LatLng(51.928020, 4.444452);
+        LatLng r2 = new LatLng(51.927996, 4.446437);
+        LatLng r3 = new LatLng(51.927938, 4.451841);
+        LatLng r4 = new LatLng(51.927389, 4.451841);
+        LatLng r5 = new LatLng(51.926942, 4.450709);
+        LatLng r6 = new LatLng(51.925959, 4.451020);
+
+
 
         switch (route) {
-            case 0:
-                mMap.addMarker(new MarkerOptions().position(ingang).title("Ingang"));
-                mMap.addMarker(new MarkerOptions().position(zeeleeuw).title("Zeeleeuw").snippet("Voedertijd: 10:00"));
-                mMap.addMarker(new MarkerOptions().position(ijsbeer).title("Ijsbeer").snippet("Voedertijd: 11:00"));
-                mMap.addMarker(new MarkerOptions().position(vlinders).title("Vlinders").snippet("Voedertijd: 11:30"));
-                mMap.addMarker(new MarkerOptions().position(leeuwen).title("Aziatische leeuw").snippet("Voedertijd: 12:00"));
-                mMap.addMarker(new MarkerOptions().position(olifant).title("Aziatische olifant").snippet("Voedertijd: 13:00"));
-                mMap.addMarker(new MarkerOptions().position(tijger).title("Sumatraanse tijger").snippet("Voedertijd: 14:00"));
-                mMap.addMarker(new MarkerOptions().position(gorilla).title("Westelijke laagland gorilla").snippet("Voedertijd: 15:00"));
-                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(ingang, 15f));
-                break;
             case 1:
                 mMap.addMarker(new MarkerOptions().position(ingang).title("Ingang"));
                 mMap.addMarker(new MarkerOptions().position(zeeleeuw).title("Zeeleeuw").snippet("Voedertijd: 10:00"));
                 mMap.addMarker(new MarkerOptions().position(ijsbeer).title("Ijsbeer").snippet("Voedertijd: 11:00"));
                 mMap.addMarker(new MarkerOptions().position(vlinders).title("Vlinders").snippet("Voedertijd: 11:30"));
+                mMap.addMarker(new MarkerOptions().position(leeuwen).title("Aziatische leeuw").snippet("Voedertijd: 12:00"));
+                mMap.addMarker(new MarkerOptions().position(olifant).title("Aziatische olifant").snippet("Voedertijd: 13:00"));
+                mMap.addMarker(new MarkerOptions().position(tijger).title("Sumatraanse tijger").snippet("Voedertijd: 14:00"));
+                mMap.addMarker(new MarkerOptions().position(gorilla).title("Westelijke laagland gorilla").snippet("Voedertijd: 15:00"));
                 mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(ingang, 15f));
+                mMap.addPolyline(
+                        new PolylineOptions()
+                            .add(ingang)
+                            .add(r1)
+                            .add(zeeleeuw)
+                            .add(r1)
+                            .add(ijsbeer)
+                            .add(r2)
+                            .add(vlinders)
+                            .add(leeuwen)
+                            .add(olifant)
+                            .add(r3)
+                            .add(r4)
+                            .add(tijger)
+                            .add(r5)
+                            .add(r6)
+                            .add(gorilla)
+                );
                 break;
             case 2:
+                mMap.addMarker(new MarkerOptions().position(ingang).title("Ingang"));
+                mMap.addMarker(new MarkerOptions().position(zeeleeuw).title("Zeeleeuw").snippet("Voedertijd: 10:00"));
+                mMap.addMarker(new MarkerOptions().position(ijsbeer).title("Ijsbeer").snippet("Voedertijd: 11:00"));
+                mMap.addMarker(new MarkerOptions().position(vlinders).title("Vlinders").snippet("Voedertijd: 11:30"));
+                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(ingang, 15f));
+                mMap.addPolyline(
+                        new PolylineOptions()
+                                .add(ingang)
+                                .add(r1)
+                                .add(zeeleeuw)
+                                .add(r1)
+                                .add(ijsbeer)
+                                .add(r2)
+                                .add(vlinders)
+                );
+                break;
+            case 3:
                 mMap.addMarker(new MarkerOptions().position(ingang).title("Ingang"));
                 mMap.addMarker(new MarkerOptions().position(leeuwen).title("Aziatische leeuw").snippet("Voedertijd: 12:00"));
                 mMap.addMarker(new MarkerOptions().position(olifant).title("Aziatische olifant").snippet("Voedertijd: 13:00"));
                 mMap.addMarker(new MarkerOptions().position(tijger).title("Sumatraanse tijger").snippet("Voedertijd: 14:00"));
                 mMap.addMarker(new MarkerOptions().position(gorilla).title("Westelijke laagland gorilla").snippet("Voedertijd: 15:00"));
                 mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(ingang, 15f));
+                mMap.addPolyline(
+                        new PolylineOptions()
+                                .add(ingang)
+                                .add(r1)
+                                .add(ijsbeer)
+                                .add(r2)
+                                .add(vlinders)
+                                .add(leeuwen)
+                                .add(olifant)
+                                .add(r3)
+                                .add(r4)
+                                .add(tijger)
+                                .add(r5)
+                                .add(r6)
+                                .add(gorilla)
+                );
                 break;
+                default:
+                    mMap.addMarker(new MarkerOptions().position(ingang).title("Ingang"));
+                    mMap.addMarker(new MarkerOptions().position(zeeleeuw).title("Zeeleeuw").snippet("Voedertijd: 10:00"));
+                    mMap.addMarker(new MarkerOptions().position(ijsbeer).title("Ijsbeer").snippet("Voedertijd: 11:00"));
+                    mMap.addMarker(new MarkerOptions().position(vlinders).title("Vlinders").snippet("Voedertijd: 11:30"));
+                    mMap.addMarker(new MarkerOptions().position(leeuwen).title("Aziatische leeuw").snippet("Voedertijd: 12:00"));
+                    mMap.addMarker(new MarkerOptions().position(olifant).title("Aziatische olifant").snippet("Voedertijd: 13:00"));
+                    mMap.addMarker(new MarkerOptions().position(tijger).title("Sumatraanse tijger").snippet("Voedertijd: 14:00"));
+                    mMap.addMarker(new MarkerOptions().position(gorilla).title("Westelijke laagland gorilla").snippet("Voedertijd: 15:00"));
+                    mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(ingang, 15f));
+
         }
     }
     public void startRouteActivity2 (View view) {
